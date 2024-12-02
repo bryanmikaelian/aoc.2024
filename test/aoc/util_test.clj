@@ -6,6 +6,6 @@
 
 (deftest test-read-input
   (testing "valid input"
-    (is (= "test\n" (util/read-input-for-day 0))))
+    (is (= '("test") (util/read-input-for-day 0))))
   (testing "invalid input"
     (is (thrown? IllegalArgumentException (util/read-input-for-day 99)))))
