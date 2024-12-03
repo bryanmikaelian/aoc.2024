@@ -1,6 +1,5 @@
 (ns aoc.solutions.one
   (:require
-    [aoc.util :refer [read-input-for-day]]
     [clojure.string :as s]))
 
 
@@ -11,9 +10,9 @@
        (map #(Integer/parseInt %))))
 
 
-(defn- split
-  [pair]
-  (first pair))
+(defn- split-sort-list
+  [l f]
+  (sort (map f l)))
 
 
 (defn- diff
@@ -25,26 +24,31 @@
       (- p2 p1))))
 
 
-(defn- score
-  [num freq])
+(defn- distance
+  [d]
+  (reduce + (map diff d)))
+
+
+(defn- calc-similarity
+  [num freqs]
+  (let [freq (get freqs num 0)]
+    (* num freq)))
 
 
 (defn- similarity
   [d freqs]
-  [1])
+  (reduce + (map #(calc-similarity % freqs) d)))
 
 
 (defn solve
   [input]
-  (let [d (map format input)
-        d1 (sort (map first d))
-        d2 (sort (map last d))
+  (let [l (map format input)
+        d1 (split-sort-list l first)
+        d2 (split-sort-list l last)
         sorted (map vector d2 d1)
-        distance (reduce + (map diff sorted))
-        s (reduce * (similarity d1 (frequencies d2)))]
-
-    {:distance distance
-     :similarity -1}))
+        d (distance sorted)
+        s (similarity d1 (frequencies d2))]
 
 
-(solve (read-input-for-day 1))
+    {:distance d
+     :similarity s}))
