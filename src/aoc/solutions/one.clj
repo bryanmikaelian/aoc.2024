@@ -49,6 +49,5 @@
         d (distance sorted)
         s (similarity d1 (frequencies d2))]
 
-
     {:distance d
      :similarity s}))

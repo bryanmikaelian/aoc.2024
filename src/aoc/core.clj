@@ -1,10 +1,13 @@
 (ns aoc.core
   (:require
     [aoc.solutions.one :as one]
+    [aoc.solutions.two :as two]
     [aoc.util :refer [read-input-for-day]]))
 
 
-(def solutions {:1 one/solve})
+(def solutions
+  {:1 one/solve
+   :2 two/solve})
 
 
 (defn- find-solution-fn-for-day

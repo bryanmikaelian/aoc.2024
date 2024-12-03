@@ -9,4 +9,7 @@
     (testing "day 1"
       (let [{:keys [distance similarity]} (core/solve-for-day 1)]
         (is (= 1580061 distance))
-        (is (=  23046913 similarity))))))
+        (is (=  23046913 similarity))))
+    (testing "day 2"
+      (let [{:keys [safe]} (core/solve-for-day 2)]
+        (is (= 402 safe))))))
