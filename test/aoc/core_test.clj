@@ -11,5 +11,6 @@
         (is (= 1580061 distance))
         (is (=  23046913 similarity))))
     (testing "day 2"
-      (let [{:keys [safe]} (core/solve-for-day 2)]
-        (is (= 402 safe))))))
+      (let [{:keys [safe fixed]} (core/solve-for-day 2)]
+        (is (= 402 safe))
+        (is (= -1000 fixed))))))

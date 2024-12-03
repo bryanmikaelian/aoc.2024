@@ -33,18 +33,37 @@
       (= (sort-by decreasing level) level)))
 
 
-(defn- safe-level?
+(defn- safe-pair?
+  [pair]
+  (every? #(and (< (diff %) 4) (> (diff %) 0)) pair))
+
+
+(defn- broken-pair?
+  [pair]
+  (> (diff pair) 3))
+
+
+(defn- fixable-level?
   [level]
-  (if-not
-    false
-    (every? #(and (< (diff %) 4) (> (diff %) 0)) level)))
+  (= 1 (count (filter broken-pair? level))))
+
+
+(defn- fix-level
+  [level]
+  (if (fixable-level? level)
+    (filter #(not (broken-pair? %)) level)
+    level))
 
 
 (defn solve
   [input]
   (let [d (map format input)
-        d1 (filter valid-direction? d)
-        levels (map build-levels-pairs d1)
-        safe-levels (filter safe-level? levels)]
-    (prn (first safe-levels))
-    {:safe (count safe-levels)}))
+        levels (filter valid-direction? d)
+        pairs (map build-levels-pairs levels)
+        safe-pairs (filter safe-pair? pairs)
+        fixable-safe-pairs (filter safe-pair? (map fix-level levels))]
+    {:safe (count safe-pairs)
+     :fixed (count fixable-safe-pairs)}))
+
+
+;; (filter #(not (broken-pair? %)) (build-levels-pairs [1 2 3 9 10 11]))
