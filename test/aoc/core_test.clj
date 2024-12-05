@@ -13,4 +13,9 @@
     (testing "day 2"
       (let [{:keys [safe fixed]} (core/solve-for-day 2)]
         (is (= 402 safe))
-        (is (= -1000 fixed))))))
+        (is (= -1000 fixed))))
+
+    (testing "day 3"
+      (let [{:keys [mult]} (core/solve-for-day 3)]
+        (is (= 181345830 mult))
+        (is (= -1000 mult))))))
