@@ -16,6 +16,6 @@
         (is (= -1000 fixed))))
 
     (testing "day 3"
-      (let [{:keys [mult]} (core/solve-for-day 3)]
-        (is (= 181345830 mult))
-        (is (= -1000 mult))))))
+      (let [{:keys [simple advance]} (core/solve-for-day 3)]
+        (is (= 181345830 simple))
+        (is (= -1000 advance))))))
