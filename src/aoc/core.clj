@@ -1,5 +1,6 @@
 (ns aoc.core
   (:require
+    [aoc.solutions.four :as four]
     [aoc.solutions.one :as one]
     [aoc.solutions.three :as three]
     [aoc.solutions.two :as two]
@@ -9,7 +10,8 @@
 (def solutions
   {:1 one/solve
    :2 two/solve
-   :3 three/solve})
+   :3 three/solve
+   :4 four/solve})
 
 
 (defn- find-solution-fn-for-day

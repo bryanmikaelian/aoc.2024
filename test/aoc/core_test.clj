@@ -18,4 +18,8 @@
     (testing "day 3"
       (let [{:keys [simple advance]} (core/solve-for-day 3)]
         (is (= 181345830 simple))
-        (is (= -1000 advance))))))
+        (is (= -1000 advance))))
+    (testing "day 4"
+      (let [{:keys []} (core/solve-for-day 4)]
+        (is (= -1000 0))
+        (is (= -1000 0))))))
