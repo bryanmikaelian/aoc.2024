@@ -1,6 +1,7 @@
 (ns aoc.util
   (:require
-    [clojure.java.io :as io]))
+    [clojure.java.io :as io]
+    [clojure.string :as s]))
 
 
 (defn- path-for-day
@@ -15,7 +16,10 @@
 
 (defn read-input-for-day
   [d]
-  (-> (path-for-day d)
-      read-file
-      io/reader
-      line-seq))
+  (let [i (-> (path-for-day d)
+              read-file
+              io/reader
+              line-seq)
+        valid (filter seq i)]
+
+    valid))
